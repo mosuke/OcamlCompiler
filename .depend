@@ -1,0 +1,53 @@
+arm_noreg.cmo : vm.cmo syntax.cmo normal.cmo arm_spec.cmo
+arm_noreg.cmx : vm.cmx syntax.cmx normal.cmx arm_spec.cmx
+arm_reg.cmo : syntax.cmo reg.cmo arm_spec.cmo
+arm_reg.cmx : syntax.cmx reg.cmx arm_spec.cmx
+arm_simulator.cmo : arm_spec.cmo
+arm_simulator.cmx : arm_spec.cmx
+arm_spec.cmo :
+arm_spec.cmx :
+cfg.cmo : vm.cmo mySet.cmi
+cfg.cmx : vm.cmx mySet.cmx
+closure.cmo : syntax.cmo pretty.cmi normal.cmo
+closure.cmx : syntax.cmx pretty.cmx normal.cmx
+dfa.cmo : vm.cmo mySet.cmi myMap.cmi cfg.cmo
+dfa.cmx : vm.cmx mySet.cmx myMap.cmx cfg.cmx
+environment.cmo : syntax.cmo environment.cmi
+environment.cmx : syntax.cmx environment.cmi
+environment.cmi : syntax.cmo
+flat.cmo : syntax.cmo pretty.cmi closure.cmo
+flat.cmx : syntax.cmx pretty.cmx closure.cmx
+lexer.cmo : parser.cmi
+lexer.cmx : parser.cmx
+live.cmo : vm.cmo mySet.cmi dfa.cmo cfg.cmo
+live.cmx : vm.cmx mySet.cmx dfa.cmx cfg.cmx
+main.cmo : vm.cmo reg.cmo parser.cmi opt.cmo normal.cmo lexer.cmo flat.cmo \
+    closure.cmo cfg.cmo arm_spec.cmo arm_simulator.cmo arm_reg.cmo \
+    arm_noreg.cmo
+main.cmx : vm.cmx reg.cmx parser.cmx opt.cmx normal.cmx lexer.cmx flat.cmx \
+    closure.cmx cfg.cmx arm_spec.cmx arm_simulator.cmx arm_reg.cmx \
+    arm_noreg.cmx
+misc.cmo :
+misc.cmx :
+myMap.cmo : mySet.cmi myMap.cmi
+myMap.cmx : mySet.cmx myMap.cmi
+myMap.cmi : mySet.cmi
+mySet.cmo : mySet.cmi
+mySet.cmx : mySet.cmi
+mySet.cmi :
+normal.cmo : syntax.cmo pretty.cmi misc.cmo
+normal.cmx : syntax.cmx pretty.cmx misc.cmx
+opt.cmo : reg.cmo mySet.cmi myMap.cmi live.cmo dfa.cmo cfg.cmo
+opt.cmx : reg.cmx mySet.cmx myMap.cmx live.cmx dfa.cmx cfg.cmx
+parser.cmo : syntax.cmo parser.cmi
+parser.cmx : syntax.cmx parser.cmi
+parser.cmi : syntax.cmo
+pretty.cmo : pretty.cmi
+pretty.cmx : pretty.cmi
+pretty.cmi :
+reg.cmo : vm.cmo syntax.cmo
+reg.cmx : vm.cmx syntax.cmx
+syntax.cmo :
+syntax.cmx :
+vm.cmo : syntax.cmo normal.cmo flat.cmo
+vm.cmx : syntax.cmx normal.cmx flat.cmx
